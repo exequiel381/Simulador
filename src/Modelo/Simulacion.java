@@ -68,7 +68,7 @@ public class Simulacion {
 
        
 
-        while(d<=30){
+        while(d<=30){//dias
             
             i = 0;
             TandaCompleta = 0;
