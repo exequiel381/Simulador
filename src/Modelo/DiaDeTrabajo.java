@@ -1,0 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Modelo;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author fiume
+ */
+public class DiaDeTrabajo {
+    
+    private ArrayList<Tanda> tandasDelDia;
+    private double Ganancia;
+
+    public ArrayList<Tanda> getTandasDelDia() {
+        return tandasDelDia;
+    }
+
+    public void setTandasDelDia(ArrayList<Tanda> tandasDelDia) {
+        this.tandasDelDia = tandasDelDia;
+    }
+    
+    public DiaDeTrabajo(ArrayList<Tanda> tandasDelDia ){
+        
+        this.tandasDelDia = tandasDelDia;
+        
+    }
+    
+    public int getCantidadTandas(){
+        return tandasDelDia.size();
+    }
+    
+}

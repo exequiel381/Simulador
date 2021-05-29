@@ -13,14 +13,13 @@ import java.util.Random;
  */
 public class DistribucionesDeProbabilidad {
     
-    private Generador g;
+   
     
     public DistribucionesDeProbabilidad(){
-        g = new Generador();
+      
     }
     
-    public int Uniforme(int a,int b){
-        double u = g.GenerarNumerosAleatorio(1).get(0);
+    public int Uniforme(int a,int b, double u){
         double valor = a + (b-a)*u;
         return (int)valor;
     }
@@ -30,8 +29,7 @@ public class DistribucionesDeProbabilidad {
         return r.nextGaussian()*desviacion+media;
     }
     
-     public double Exponencial(double cantidad,double tiempo){
-        double u = g.GenerarNumerosAleatorio(1).get(0);
+     public double Exponencial(double cantidad,double tiempo,double u){
         double  a = cantidad/tiempo;
         double E = 1/a;
         
