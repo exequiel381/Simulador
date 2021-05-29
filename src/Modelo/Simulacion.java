@@ -68,7 +68,8 @@ public class Simulacion {
         
        
         posicionTablaAleatoria=0;
-        
+        //esto va ?
+
         d = 1;
         TiempoMes = 0;
         TotalDDLMes = 0;
@@ -123,6 +124,45 @@ public class Simulacion {
                                 
                                 ip++;// vuelvo a 1
                             }
+                            //Salida del while ip<=CantPotes RAGUEB
+                            if (this.ObtenerVariableAleatoria()<=0.99){
+                                DDLProducido= distribuciones.Uniforme(1350,1425,this.ObtenerVariableAleatoria());
+                                TotalDDLDia=totalDDLDia+DDLProducido;
+                                TandaCompleta++;
+                                TiempoTotal=TiempoCM+TiempoEnf+TiempoEnv;
+                                TiempoDia=TiempoDia+TiempoTotal;
+                                GastoPlastico=PotesPlastico*costoPotePlastico;
+                                GastoCarton=PotesCarton*costoPoteCarton;
+                                GastoVidrio=PotesVidrio*costoPoteVidrio;
+                                GastoPotes=GastoPlastico+GastoCarton+GastoVidrio;
+                                Perdida=costoMateriaPrima+costoLeche+GastoPotes;
+                                GastoDia=GastoDia+Perdida;
+                                GanaciaPlastico=PotesPlastico*precioPotePlastico;
+                                GanaciaVidrio=PotesVidrio*precioPoteVidrio;
+                                GananciaCarton=PotesCarton*precioPoteCarton;
+                                GanaciaDia=GanaciaDia+GanaciaPlastico+GanaciaVidrio+GanaciaCarton;
+
+                                System.out.println("La leche esta en buen estado ");
+                                System.out.println("Cantidad de potes de plastico producidos: "+PotesPlastico);
+                                System.out.println("Cantidad de potes de carton producidos: "+PotesCarton);
+                                System.out.println("Cantidad de potes de vidrio producidos: "+PotesVidrio);
+                                System.out.println("Tiempo total de produccion: "+TiempoTotal);
+                            }else{
+                                GastoPlastico=PotesPlastico*costoPotePlastico;
+                                GastoCarton=PotesCarton*costoPoteCarton;
+                                GastoVidrio=PotesVidrio*costoPoteVidrio;
+                                GastoPotes=GastoPlastico+GastoCarton+GastoVidrio;
+                                Perdida=costoMateriaPrima+costoLeche+GastoPotes;
+                                TiempoTotal=TiempoCM+TiempoEnf+TiempoEnv;
+                                TiempoDia=TiempoDia+TiempoTotal;
+                                System.out.println("La leche está cuajada\n"
+                                    + "Se la detectó en el proceso de Envasado\n"
+                                    + "Tiempo perdido: "+TiempoTotal);
+                                System.out.println("Cantidad de potes de plastico desperdiciados: "+PotesPlastico);
+                                System.out.println("Cantidad de potes de carton desperdiciados: "+PotesCarton);
+                                System.out.println("Cantidad de potes de vidrio desperdiciados: "+PotesVidrio);
+                                GastoDia=GastoDia+Perdida;
+                            }//agregue hasta aca la salida del while de ip<=CantidadPotes RAGUEB
                         }else{
                             Perdida = costoMateriaPrima + costoLeche;
                             GastoDia = GastoDia + Perdida;
@@ -155,7 +195,27 @@ public class Simulacion {
                 i++; // vuelvo a 2
             }
             
+            //Salida del while de tandas RAGUEB
+            System.out.println("Se completaron las tandas del dia");//consultar esto
+            System.out.println("El total de dulce de leche producido en el dia fue de: "+TotalDDLDia);
+            System.out.println("El tiempo de produccion del dia fue de : "+TiempoDia);
+            System.out.println("La ganancia del dia de hoy fue de: "+GananciaDia);
+
+            TiempoMes=TiempoMes+TiempoDia;
+            TotalDDLMes=TotalDDLMes+TotalDDLDia;
+            GastoMensual=GastoMensual+GastoDia;
+            GanaciaMensual=GanaciaMensual+GanaciaDia;
+            d++;
+            //Hastta aca salida del while de tandas RAGUEB
         }
+       //Salida del while de d<=30 RAGUEB
+       GastosEmpresa = distribuciones.Normal(2200000,150000);
+       GastoTotalMensual=GastoEmpresa+GastoMensual;
+       GanaciaNeta=GanaciaMensual-GastoTotalMensual;
+       System.out.println("La ganancia neta del mes fue de: "+GananciaNeta);
+       System.out.println("El tiempo total de produccion de leche del mes fue de: "+TiempoMes);
+       System.out.println("El total de dulce de leche producido en el mes fue de: "+TotalDDLMes);
+       //Hasta aca salida del while de d<=30 Ragueb
     }
     
     public double ObtenerVariableAleatoria(){
