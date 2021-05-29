@@ -216,6 +216,7 @@ public class Simulacion {
        System.out.println("El tiempo total de produccion de leche del mes fue de: "+TiempoMes);
        System.out.println("El total de dulce de leche producido en el mes fue de: "+TotalDDLMes);
        //Hasta aca salida del while de d<=30 Ragueb
+
     }
     
     public double ObtenerVariableAleatoria(){
