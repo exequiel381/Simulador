@@ -15,6 +15,17 @@ public class DiaDeTrabajo {
     
     private ArrayList<Tanda> tandasDelDia;
     private double Ganancia;
+    private double Tiempo;
+    private double TotalDDLDia;
+
+    public DiaDeTrabajo(ArrayList<Tanda> tandasDelDia, double Ganancia, double Tiempo, double TotalDDLDia) {
+        this.tandasDelDia = tandasDelDia;
+        this.Ganancia = Ganancia;
+        this.Tiempo = Tiempo;
+        this.TotalDDLDia = TotalDDLDia;
+    }
+    
+    
 
     public ArrayList<Tanda> getTandasDelDia() {
         return tandasDelDia;
@@ -32,6 +43,30 @@ public class DiaDeTrabajo {
     
     public int getCantidadTandas(){
         return tandasDelDia.size();
+    }
+
+    public double getGanancia() {
+        return Ganancia;
+    }
+
+    public void setGanancia(double Ganancia) {
+        this.Ganancia = Ganancia;
+    }
+
+    public double getTiempo() {
+        return Tiempo;
+    }
+
+    public void setTiempo(double Tiempo) {
+        this.Tiempo = Tiempo;
+    }
+
+    public double getTotalDDLDia() {
+        return TotalDDLDia;
+    }
+
+    public void setTotalDDLDia(double TotalDDLDia) {
+        this.TotalDDLDia = TotalDDLDia;
     }
     
 }
