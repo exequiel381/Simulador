@@ -7,13 +7,6 @@ package simulador;
 
 
 import Controlador.Controlador;
-import Modelo.DistribucionesDeProbabilidad;
-import Modelo.Generador;
-import Modelo.Simulacion;
-import Vistas.primera;
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  *
  * @author fiume
@@ -25,13 +18,9 @@ public class Simulador {
      */
     public static void main(String[] args) {
            
-     //Controlador controlador = new Controlador();
+     Controlador controlador = new Controlador();
      
-        Simulacion s = new Simulacion();
-        s.IniciarSimulacion(10,10,10,10,10,10,10,10);
-     
-      
-     
+       
       
     }
     
