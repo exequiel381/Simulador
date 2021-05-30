@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Modelo.Simulacion;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,4 +29,11 @@ public class NumerosAleatoriosTest {
      public void PruebaNumerosUnitarios() {
          
      }
+     
+      
+      @Test
+      public void ObtenerVariableAleatoriaTest(){
+          
+          
+      }
 }

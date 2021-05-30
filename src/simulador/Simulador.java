@@ -9,6 +9,7 @@ package simulador;
 import Controlador.Controlador;
 import Modelo.DistribucionesDeProbabilidad;
 import Modelo.Generador;
+import Modelo.Simulacion;
 import Vistas.primera;
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,26 +27,8 @@ public class Simulador {
            
      //Controlador controlador = new Controlador();
      
-        DistribucionesDeProbabilidad d = new DistribucionesDeProbabilidad();
-        int i=0;
-        while(i<30){
-            System.out.println(d.getPoisson(3.0));
-            i++;
-        }
-        
-        
-     
-        
-     
-     
-     
-        //Si quiero el primer elemnto
-        //System.out.println(g.GenerarNumerosAleatorio(5631,1317,547,1).get(0));
-     
-     
-     
-     
-      
+        Simulacion s = new Simulacion();
+        s.IniciarSimulacion(69270.0,56000.0,34.0,12.0,30.0,90.0,75.0,80.0);
     }
     
 }

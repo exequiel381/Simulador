@@ -10,14 +10,42 @@ package Modelo;
  * @author fiume
  */
 public class Tanda {
-    private int CantidadPotesVidrio;
-    private int CantidadPotesCarton;
-    private int CantidadPotesPlastico;
-    private double Duracion;
-    private boolean LecheCuajada;
+    private int CantidadPotesVidrio=0;
+    private int CantidadPotesCarton=0;
+    private int CantidadPotesPlastico=0;
+    private double Duracion=0;
+    private boolean LecheCuajada=false;
     private String ProcesoDeteccion = "-";
+    private double DDLProducidoEnTanda = 0;
+    private double TiempoTotal = 0;
+    private double  CostoTanda=0;
+    private double Perdida=0;
 
-    public Tanda() {
+    public Tanda(double DDLProducidoEnTanda,double TiempoTotal,int CantidadPotesVidrio,int CantidadPotesCarton,int CantidadPotesPlastico,boolean LecheCuajada,String ProcesoDeteccion,double CostoTanda) {
+        this.CantidadPotesCarton= CantidadPotesCarton;
+        this.CantidadPotesPlastico = CantidadPotesPlastico;
+        this.CantidadPotesVidrio = CantidadPotesVidrio;
+        this.DDLProducidoEnTanda = DDLProducidoEnTanda;
+        this.TiempoTotal =TiempoTotal;
+        this.LecheCuajada = LecheCuajada;
+        this.ProcesoDeteccion = ProcesoDeteccion;
+        this.CostoTanda = CostoTanda;
+    }
+
+    public double getDDLProducidoEnTanda() {
+        return DDLProducidoEnTanda;
+    }
+
+    public void setDDLProducidoEnTanda(double DDLProducidoEnTanda) {
+        this.DDLProducidoEnTanda = DDLProducidoEnTanda;
+    }
+
+    public double getTiempoTotal() {
+        return TiempoTotal;
+    }
+
+    public void setTiempoTotal(double TiempoTotal) {
+        this.TiempoTotal = TiempoTotal;
     }
 
     public int getCantidadPotesVidrio() {

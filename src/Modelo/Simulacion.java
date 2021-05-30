@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.util.ArrayList;
@@ -22,21 +17,24 @@ public class Simulacion {
     int posicionTablaAleatoria=0;
     
     int d;
+    
+    //variables por mes
     double TiempoMes;
     double TotalDDLMes;
-    double GanaciaNeta;
+    double GananciaNeta;
     double GastoMensual;
     double GastosEmpresa;
     double GastoTotalMensual;
     double GanaciaMensual;
 
+    //Variables por dia 
     int i;
     int TandasPorDia;
     double TandaCompleta;
     double TotalDDLDia;
     double TiempoDia;
     double GastoDia;
-    double GanaciaDIa;
+    double GananciaDia;
 
     int PotesPlastico;
     int PotesCarton;
@@ -52,13 +50,19 @@ public class Simulacion {
     double TiempoEnf;
     double TiempoEnv;
     int CantPotes;
+    
+    //VARIABLES PARA LAS TANDAS
+    double GanaciaPlasticoEnTanda;
+    double GanaciaVidrioEnTanda;
+    double GananciaCartonEnTanda;
+    double DDLProducidoEnTanda;
 
 
     
     public Simulacion() {
        
         g = new Generador();
-        aleatorias = g.GenerarNumerosAleatorio(200);
+        aleatorias = g.GenerarNumerosAleatorio(1000000);
         ColeccionTandasPorDia = new ArrayList<>();
         DiasTrabajados = new ArrayList<>();
         
@@ -73,7 +77,7 @@ public class Simulacion {
         d = 1;
         TiempoMes = 0;
         TotalDDLMes = 0;
-        GanaciaNeta = 0;
+        GananciaNeta = 0;
         GastoMensual = 0;
         GastosEmpresa = 0;
         GastoTotalMensual = 0;
@@ -90,7 +94,7 @@ public class Simulacion {
             TotalDDLDia = 0;
             TiempoDia = 0;
             GastoDia = 0;
-            GanaciaDIa = 0;
+            GananciaDia = 0;
             
             TandasPorDia = distribuciones.Uniforme(1,3,this.ObtenerVariableAleatoria());
             
@@ -106,6 +110,11 @@ public class Simulacion {
                 Perdida = 0;
                 TiempoTotal = 0;
                 
+                GanaciaPlasticoEnTanda = 0;
+                GanaciaVidrioEnTanda = 0;
+                GananciaCartonEnTanda = 0;
+                DDLProducidoEnTanda = 0;
+                
                 if(this.ObtenerVariableAleatoria()<=0.95){      //BINOMIAL 1
                     TiempoCM = distribuciones.Normal(120,15);
                     if (this.ObtenerVariableAleatoria() <= 0.97) {      //BINOMIAL 2
@@ -115,19 +124,25 @@ public class Simulacion {
                             CantPotes = distribuciones.Uniforme(3375, 3565, this.ObtenerVariableAleatoria());
                             int ip=1;
                             while(ip<=CantPotes){ // 1
-                                if(this.ObtenerVariableAleatoria()<=0.65){
+                                double u1=this.ObtenerVariableAleatoria();
+                                if(u1<=0.65){
                                     PotesPlastico++;
+                                }else{
+                                    if(u1>=0.65 && u1<=0.90){
+                                        PotesCarton++;
+                                    }else PotesVidrio++;
                                 }
-                                if(this.ObtenerVariableAleatoria()<=0.9){
-                                    PotesCarton++;
-                                }else PotesVidrio++;
-                                
                                 ip++;// vuelvo a 1
                             }
                             //Salida del while ip<=CantPotes RAGUEB
                             if (this.ObtenerVariableAleatoria()<=0.99){
+<<<<<<< HEAD
+                                DDLProducidoEnTanda = distribuciones.Uniforme(1350,1425,this.ObtenerVariableAleatoria());
+                                TotalDDLDia+=DDLProducidoEnTanda;
+=======
                                 DDLProducido= distribuciones.Uniforme(1350,1425,this.ObtenerVariableAleatoria());
                                 TotalDDLDia=totalDDLDia+DDLProducido;
+>>>>>>> 599f0cf0036fbbc17884efd1b519bfb54120f987
                                 TandaCompleta++;
                                 TiempoTotal=TiempoCM+TiempoEnf+TiempoEnv;
                                 TiempoDia=TiempoDia+TiempoTotal;
@@ -137,11 +152,21 @@ public class Simulacion {
                                 GastoPotes=GastoPlastico+GastoCarton+GastoVidrio;
                                 Perdida=costoMateriaPrima+costoLeche+GastoPotes;
                                 GastoDia=GastoDia+Perdida;
+<<<<<<< HEAD
+                                GanaciaPlasticoEnTanda=PotesPlastico*precioPotePlastico;
+                                GanaciaVidrioEnTanda=PotesVidrio*precioPoteVidrio;
+                                GananciaCartonEnTanda=PotesCarton*precioPoteCarton;
+                                GananciaDia += GanaciaPlasticoEnTanda+GanaciaVidrioEnTanda+GananciaCartonEnTanda;
+
+                                ColeccionTandasPorDia.add(new Tanda(DDLProducidoEnTanda,TiempoTotal,PotesVidrio,PotesCarton,PotesPlastico,false,"-",Perdida));
+                                
+=======
                                 GanaciaPlastico=PotesPlastico*precioPotePlastico;
                                 GanaciaVidrio=PotesVidrio*precioPoteVidrio;
                                 GananciaCarton=PotesCarton*precioPoteCarton;
                                 GanaciaDia=GanaciaDia+GanaciaPlastico+GanaciaVidrio+GanaciaCarton;
 
+>>>>>>> 599f0cf0036fbbc17884efd1b519bfb54120f987
                                 System.out.println("La leche esta en buen estado ");
                                 System.out.println("Cantidad de potes de plastico producidos: "+PotesPlastico);
                                 System.out.println("Cantidad de potes de carton producidos: "+PotesCarton);
@@ -155,6 +180,12 @@ public class Simulacion {
                                 Perdida=costoMateriaPrima+costoLeche+GastoPotes;
                                 TiempoTotal=TiempoCM+TiempoEnf+TiempoEnv;
                                 TiempoDia=TiempoDia+TiempoTotal;
+<<<<<<< HEAD
+                                
+                                ColeccionTandasPorDia.add(new Tanda(0,TiempoTotal,PotesVidrio,PotesCarton,PotesPlastico,true,"ENVASADO",Perdida));
+                                
+=======
+>>>>>>> 599f0cf0036fbbc17884efd1b519bfb54120f987
                                 System.out.println("La leche está cuajada\n"
                                     + "Se la detectó en el proceso de Envasado\n"
                                     + "Tiempo perdido: "+TiempoTotal);
@@ -169,6 +200,9 @@ public class Simulacion {
                             TiempoTotal = TiempoCM + TiempoEnf;
                             TiempoDia = TiempoDia + TiempoTotal;
                             //AQUI YA DEBERIAMOS INSTANCIAR UNA TANDA CON LECHE CUAJADA 
+                            
+                            ColeccionTandasPorDia.add(new Tanda(0,TiempoTotal,0,0,0,true,"ENFRIAMIENTO",Perdida));
+                            
                             System.out.println("La leche está cuajada\n"
                                     + "Se la detectó en el proceso de Enfriamiento\n"
                                     + "Tiempo perdido: "+TiempoTotal);
@@ -179,6 +213,7 @@ public class Simulacion {
                         GastoDia = GastoDia + Perdida;
                         TiempoDia = TiempoDia + TiempoCM;
                         //AQUI YA DEBERIAMOS INSTANCIAR UNA TANDA CON LECHE CUAJADA 
+                        ColeccionTandasPorDia.add(new Tanda(0,TiempoCM,0,0,0,true,"COCCION Y MEZCLA",Perdida));
                         System.out.println("La leche está cuajada\n"
                                 + "Se la detectó en el proceso de Cocción y Mezclado\n"
                                 + "Tiempo de cocción: "+TiempoCM);
@@ -188,10 +223,14 @@ public class Simulacion {
                 } else {
                     Perdida = costoLeche;
                     GastoDia += Perdida;//AQUI YA DEBERIAMOS INSTANCIAR UNA TANDA CON LECHE CUAJADA Y SU PRODUCCION 0
+                    
+                    ColeccionTandasPorDia.add(new Tanda(0,0,0,0,0,true,"RECEPCION",Perdida));
+                    
                     System.out.println("La leche está cuajada\n"
                             + "Se la detectó en el proceso de Recepción de Ingredientes");
                 }
                 //SI TODO SALE BIEN, INSTANCIAMOS UNA TANDA Y LA AGREGAMOS A LA COLECCION DE TANDAS,LUEGO CREAMOS UN DIA CON ESA COLECCION Y LIMPIAMOS  AL INGRESAR POR DIA
+                
                 i++; // vuelvo a 2
             }
             
@@ -199,24 +238,47 @@ public class Simulacion {
             System.out.println("Se completaron las tandas del dia");//consultar esto
             System.out.println("El total de dulce de leche producido en el dia fue de: "+TotalDDLDia);
             System.out.println("El tiempo de produccion del dia fue de : "+TiempoDia);
+<<<<<<< HEAD
+            System.out.println("La ganancia del dia de hoy fue de: "+GananciaDia +"\n" +"\n"+ "\n");
+
+            DiaDeTrabajo dia = new DiaDeTrabajo(ColeccionTandasPorDia,GananciaDia,TiempoDia,TotalDDLDia);
+            DiasTrabajados.add(dia);
+            
+            TiempoMes=TiempoMes+TiempoDia;
+            TotalDDLMes=TotalDDLMes+TotalDDLDia;
+            GastoMensual=GastoMensual+GastoDia;
+            GanaciaMensual=GanaciaMensual+GananciaDia;
+=======
             System.out.println("La ganancia del dia de hoy fue de: "+GananciaDia);
 
             TiempoMes=TiempoMes+TiempoDia;
             TotalDDLMes=TotalDDLMes+TotalDDLDia;
             GastoMensual=GastoMensual+GastoDia;
             GanaciaMensual=GanaciaMensual+GanaciaDia;
+>>>>>>> 599f0cf0036fbbc17884efd1b519bfb54120f987
             d++;
             //Hastta aca salida del while de tandas RAGUEB
         }
        //Salida del while de d<=30 RAGUEB
        GastosEmpresa = distribuciones.Normal(2200000,150000);
+<<<<<<< HEAD
+       GastoTotalMensual=GastosEmpresa+GastoMensual;
+       GananciaNeta=GanaciaMensual-GastoTotalMensual;
+       
+       
+       
+=======
        GastoTotalMensual=GastoEmpresa+GastoMensual;
        GanaciaNeta=GanaciaMensual-GastoTotalMensual;
+>>>>>>> 599f0cf0036fbbc17884efd1b519bfb54120f987
        System.out.println("La ganancia neta del mes fue de: "+GananciaNeta);
        System.out.println("El tiempo total de produccion de leche del mes fue de: "+TiempoMes);
        System.out.println("El total de dulce de leche producido en el mes fue de: "+TotalDDLMes);
        //Hasta aca salida del while de d<=30 Ragueb
+<<<<<<< HEAD
+=======
 
+>>>>>>> 599f0cf0036fbbc17884efd1b519bfb54120f987
     }
     
     public double ObtenerVariableAleatoria(){
@@ -235,12 +297,12 @@ public class Simulacion {
 
     
 
-    public double getGanaciaNeta() {
-        return GanaciaNeta;
+    public double getGananciaNeta() {
+        return GananciaNeta;
     }
 
-    public void setGanaciaNeta(double GanaciaNeta) {
-        this.GanaciaNeta = GanaciaNeta;
+    public void setGananciaNeta(double GanaciaNeta) {
+        this.GananciaNeta = GanaciaNeta;
     }
 
     public double getGastoMensual() {
@@ -297,3 +359,8 @@ public class Simulacion {
     
     
 }
+/*
+    ERRORES
+    1) Hace mas de carton que de plastico
+    2) Hace mas potes que la media 
+*/
