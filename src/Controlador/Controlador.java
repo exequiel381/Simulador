@@ -5,12 +5,17 @@
  */
 package Controlador;
 
+import Modelo.DiaDeTrabajo;
 import Modelo.Simulacion;
+import Modelo.Tanda;
 import Vistas.IngresoDeDatos;
 import Vistas.Resultados;
 import Vistas.primera;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +26,8 @@ public class Controlador implements ActionListener {
     private primera _primeraVista;
     private IngresoDeDatos _ingresoDatos;
     private Resultados resultados ;
+    private ArrayList<DiaDeTrabajo> diasDeTrabajo;
+    private DecimalFormat formato = new DecimalFormat("#.00");
     
     public Controlador(){
         _primeraVista = new primera();
@@ -40,12 +47,64 @@ public class Controlador implements ActionListener {
         }
         if (e.getActionCommand().equals(_ingresoDatos.SIMULAR)) {
             Simulacion s = new Simulacion();
-            s.IniciarSimulacion(10,10,10,10,10,10,10,10);
-            resultados = new Resultados();
-            resultados.setVisible(true);
             
+            double CMP=0;
+            double CL=0;
+            double CPV=0;
+            double CPC=0;
+            double CPP=0;
+            double PV=0;
+            double PC=0;
+            double PP=0;
+
+            try {
+                CMP = Double.parseDouble("69270");//Convierto todos los txt que recibo
+                CL = Double.parseDouble("56000");
+                CPV = Double.parseDouble("34");
+                CPC = Double.parseDouble("30");
+                CPP = Double.parseDouble("12");
+                PV = Double.parseDouble("90");
+                PC = Double.parseDouble("85");
+                PP = Double.parseDouble("70");
+                
+                s.IniciarSimulacion(CMP, CL, CPV, CPP, CPC, PV, PP, PC);
+                
+                resultados = new Resultados();
+                diasDeTrabajo = s.getDiasTrabajados();
+                this.RellenarTablaDias();
+                resultados.setVisible(true);
+                
+            }catch(Exception q){
+                JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEBEN TENER UN VALOR NUMERICO");
+                System.out.println(q);
+            }
+           
         }
         
+    }
+    
+    public void RellenarTablaDias() {
+      
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        for (DiaDeTrabajo dt : diasDeTrabajo) {
+            String linea[] = new String[5];
+            linea[0] = ""+dt.getNumero();
+            linea[1] = ""+dt.getCantidadTandas();
+            linea[2] = ""+dt.getTotalDDLDia();
+            linea[3] = ""+dt.getGanancia();
+            linea[4] = "" +formato.format(dt.getTiempo());
+            lista.add(linea);
+            
+            for(Tanda t : dt.getTandasDelDia()){
+                System.out.println(t.getNumero()+"\n");
+                System.out.println(t.getCantidadPotesCarton()+"\n");
+                System.out.println(t.getTiempoTotal()+"\n");
+            }
+            
+            
+        }
+        resultados.cargarListaDias(lista);
+       
     }
     
     

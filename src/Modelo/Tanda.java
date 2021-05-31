@@ -20,8 +20,9 @@ public class Tanda {
     private double TiempoTotal = 0;
     private double  CostoTanda=0;
     private double Perdida=0;
+    private int Numero=0;
 
-    public Tanda(double DDLProducidoEnTanda,double TiempoTotal,int CantidadPotesVidrio,int CantidadPotesCarton,int CantidadPotesPlastico,boolean LecheCuajada,String ProcesoDeteccion,double CostoTanda) {
+    public Tanda(int Numero,double DDLProducidoEnTanda,double TiempoTotal,int CantidadPotesVidrio,int CantidadPotesCarton,int CantidadPotesPlastico,boolean LecheCuajada,String ProcesoDeteccion,double CostoTanda) {
         this.CantidadPotesCarton= CantidadPotesCarton;
         this.CantidadPotesPlastico = CantidadPotesPlastico;
         this.CantidadPotesVidrio = CantidadPotesVidrio;
@@ -30,6 +31,7 @@ public class Tanda {
         this.LecheCuajada = LecheCuajada;
         this.ProcesoDeteccion = ProcesoDeteccion;
         this.CostoTanda = CostoTanda;
+        this.Numero=Numero;
     }
 
     public double getDDLProducidoEnTanda() {
@@ -94,6 +96,30 @@ public class Tanda {
 
     public void setProcesoDeteccion(String ProcesoDeteccion) {
         this.ProcesoDeteccion = ProcesoDeteccion;
+    }
+
+    public double getCostoTanda() {
+        return CostoTanda;
+    }
+
+    public void setCostoTanda(double CostoTanda) {
+        this.CostoTanda = CostoTanda;
+    }
+
+    public double getPerdida() {
+        return Perdida;
+    }
+
+    public void setPerdida(double Perdida) {
+        this.Perdida = Perdida;
+    }
+
+    public int getNumero() {
+        return Numero;
+    }
+
+    public void setNumero(int Numero) {
+        this.Numero = Numero;
     }
     
     

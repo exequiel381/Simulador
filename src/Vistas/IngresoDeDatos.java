@@ -25,7 +25,7 @@ public class IngresoDeDatos extends javax.swing.JFrame {
     public IngresoDeDatos() {
         initComponents();
         this.setLocationRelativeTo(null);
-        lbDetectado.setVisible(false);
+        
     }
 
     /**
@@ -38,86 +38,47 @@ public class IngresoDeDatos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        cbxEstadoLeche = new javax.swing.JComboBox<>();
+        txtCMP = new javax.swing.JTextField();
+        txtPV = new javax.swing.JTextField();
+        txtPC = new javax.swing.JTextField();
+        txtPP = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txtCPC = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtCL = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        lbDetectado = new javax.swing.JLabel();
-        cbxDetectado = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel21 = new javax.swing.JLabel();
         btnSimular = new javax.swing.JButton();
-        jTextField13 = new javax.swing.JTextField();
+        txtCPV = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txtCPP = new javax.swing.JTextField();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Costos");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 100, 20));
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cantidad de leche [L]");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jLabel2.setText(" Costo Materia Prima $");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Temperatura de coccion [ºC]");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, 20));
+        jLabel4.setText("DDL en Vidrio $");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Temperatura de enfriamiento [ºC]");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Costo del producto [$]");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Valor de venta por unidad [$]");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText(" en el fraccionamiento [ºC]");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 200, 10));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("->");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 20, 20));
+        jLabel5.setText("DDL en Carton $");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 315, -1, 20));
 
         btnSalir.setBackground(new java.awt.Color(0, 0, 0));
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -145,89 +106,53 @@ public class IngresoDeDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 80, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 194, -1));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 150, -1));
+        jPanel1.add(txtCMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 194, -1));
+        jPanel1.add(txtPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 150, -1));
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtPCActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 150, -1));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 150, -1));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 194, -1));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 194, -1));
-
-        cbxEstadoLeche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buena", "Cuajada" }));
-        cbxEstadoLeche.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cbxEstadoLechePropertyChange(evt);
-            }
-        });
-        jPanel1.add(cbxEstadoLeche, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 190, 20));
+        jPanel1.add(txtPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 150, -1));
+        jPanel1.add(txtPP, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 150, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Cant. de Esc. Vainilla[L]");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 194, -1));
+        jLabel11.setText("Costo Pote de Vidrio $");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
+        jPanel1.add(txtCPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 194, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Ingrese los datos con los que desea simular");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 480, 20));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 480, 20));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Coccion y enfriamiento");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 220, 20));
+        jLabel13.setText("Precios de Venta");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 220, 20));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Cantidad de azucar [Kg]");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 194, -1));
+        jLabel14.setText("Costo Leche $");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+        jPanel1.add(txtCL, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 194, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Cant. de Bic. Sodio [Kg]");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 20));
+        jLabel15.setText("Costo Pote De Carton $");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, 20));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Temperatura de enfriamiento");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 340, 20));
-
-        lbDetectado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbDetectado.setForeground(new java.awt.Color(255, 255, 255));
-        lbDetectado.setText("Detectada en :");
-        jPanel1.add(lbDetectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, 20));
-
-        cbxDetectado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recepcion", "Coccion y mezcla", "Enfriamiento", "Envasado" }));
-        jPanel1.add(cbxDetectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 190, -1));
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Envasado");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 100, 20));
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Estado de la leche");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 20));
+        jLabel16.setText("DDL en Plastico $");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 120, 30));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Recepcion");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 100, 20));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastico", "Carton", "Vidrio" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 190, -1));
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Envase : ");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, 20));
+        jLabel20.setText("Costos");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 100, 20));
 
         btnSimular.setBackground(new java.awt.Color(0, 0, 0));
         btnSimular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -255,13 +180,13 @@ public class IngresoDeDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSimular, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 407, 210, 40));
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 194, -1));
+        jPanel1.add(txtCPV, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 194, -1));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Cant. de Glucosa [Kg]");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, 20));
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 194, -1));
+        jLabel22.setText("Costo Pote De Plastico $");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, 20));
+        jPanel1.add(txtCPP, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 194, -1));
 
         Fondo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Fondo.setForeground(new java.awt.Color(255, 255, 255));
@@ -304,9 +229,9 @@ public class IngresoDeDatos extends javax.swing.JFrame {
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtPCActionPerformed
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
          btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(Color.black,3));   // TODO add your handling code here:
@@ -327,15 +252,6 @@ public class IngresoDeDatos extends javax.swing.JFrame {
     private void btnSimularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimularActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSimularActionPerformed
-
-    private void cbxEstadoLechePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbxEstadoLechePropertyChange
-        if(cbxEstadoLeche.getSelectedItem().equals("Cuajada")){
-            lbDetectado.setVisible(true);
-            cbxDetectado.setVisible(true);
-        }
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_cbxEstadoLechePropertyChange
 
     /**
      * @param args the command line arguments
@@ -376,39 +292,25 @@ public class IngresoDeDatos extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSimular;
-    private javax.swing.JComboBox<String> cbxDetectado;
-    private javax.swing.JComboBox<String> cbxEstadoLeche;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel lbDetectado;
+    private javax.swing.JTextField txtCL;
+    private javax.swing.JTextField txtCMP;
+    private javax.swing.JTextField txtCPC;
+    private javax.swing.JTextField txtCPP;
+    private javax.swing.JTextField txtCPV;
+    private javax.swing.JTextField txtPC;
+    private javax.swing.JTextField txtPP;
+    private javax.swing.JTextField txtPV;
     // End of variables declaration//GEN-END:variables
 }
