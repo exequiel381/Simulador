@@ -88,7 +88,7 @@ public class Simulacion {
         while(d<=30){//3
             
             ColeccionTandasPorDia = new ArrayList<>();//ESTO AVECES FALLA ASI QUE SI NO SE LIMPIA , LO IGUALAMOS A UN ARRAY VACIO // O LO INSTANCIAMOS AQUI ASI SEA UNO NUEVO
-            
+            //esto ahora anda
             i = 1;
             TandaCompleta = 0;
             TotalDDLDia = 0;
