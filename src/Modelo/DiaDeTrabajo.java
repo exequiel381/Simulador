@@ -54,7 +54,8 @@ public class DiaDeTrabajo {
     }
     
     public int getCantidadTandas(){
-        return tandasDelDia.size();
+        return tandasDelDia.size();//aqui devolver sino la variable de las cantidad
+        
     }
 
     public double getGanancia() {

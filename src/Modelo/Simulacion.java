@@ -87,7 +87,7 @@ public class Simulacion {
 
         while(d<=30){//3
             
-            ColeccionTandasPorDia.clear();//ESTO AVECES FALLA ASI QUE SI NO SE LIMPIA , LO IGUALAMOS A UN ARRAY VACIO // O LO INSTANCIAMOS AQUI ASI SEA UNO NUEVO
+            ColeccionTandasPorDia = new ArrayList<>();//ESTO AVECES FALLA ASI QUE SI NO SE LIMPIA , LO IGUALAMOS A UN ARRAY VACIO // O LO INSTANCIAMOS AQUI ASI SEA UNO NUEVO
             
             i = 1;
             TandaCompleta = 0;
@@ -226,6 +226,8 @@ public class Simulacion {
             int cantidadTandas = ColeccionTandasPorDia.size();
             
             DiasTrabajados.add(new DiaDeTrabajo(d,ColeccionTandasPorDia,GananciaDia,TiempoDia,TotalDDLDia,cantidadTandas));
+            
+            
             
             TiempoMes=TiempoMes+TiempoDia;
             TotalDDLMes=TotalDDLMes+TotalDDLDia;

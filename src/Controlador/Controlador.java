@@ -95,11 +95,7 @@ public class Controlador implements ActionListener {
             linea[4] = "" +formato.format(dt.getTiempo());
             lista.add(linea);
             
-            for(Tanda t : dt.getTandasDelDia()){
-                System.out.println(t.getNumero()+"\n");
-                System.out.println(t.getCantidadPotesCarton()+"\n");
-                System.out.println(t.getTiempoTotal()+"\n");
-            }
+           
             
             
         }
