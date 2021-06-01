@@ -70,6 +70,7 @@ public class Controlador implements ActionListener {
                 s.IniciarSimulacion(CMP, CL, CPV, CPP, CPC, PV, PP, PC);
                 
                 resultados = new Resultados();
+                resultados.setControlador(this);
                 diasDeTrabajo = s.getDiasTrabajados();
                 this.RellenarTablaDias();
                 resultados.setVisible(true);
@@ -81,7 +82,20 @@ public class Controlador implements ActionListener {
            
         }
         
+        if (e.getActionCommand().equals(resultados.VERTANDAS)){
+            int diaSeleccionado = Integer.parseInt(resultados.seleccionarFila());
+            DiaDeTrabajo dia = new DiaDeTrabajo();
+            
+            for(DiaDeTrabajo d : diasDeTrabajo){
+                if(d.getNumero()==diaSeleccionado) dia = d;
+            }
+            
+            this.RellenarTablaTandas(dia);
     }
+        
+    }
+    
+    
     
     public void RellenarTablaDias() {
       
@@ -100,6 +114,29 @@ public class Controlador implements ActionListener {
             
         }
         resultados.cargarListaDias(lista);
+       
+    }
+    
+    
+    public void RellenarTablaTandas(DiaDeTrabajo d) {
+      
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        for (Tanda t : d.getTandasDelDia()) {
+            String linea[] = new String[7];
+            linea[0] = ""+t.getNumero();
+            linea[1] = ""+t.getCantidadPotesVidrio();
+            linea[2] = ""+t.getCantidadPotesCarton();
+            linea[3] = ""+t.getCantidadPotesPlastico();
+            linea[4] = ""+t.getEstadoLeche();
+            linea[5] = ""+t.getProcesoDeteccion();
+            linea[6] = "" +formato.format(t.getDuracion());
+            lista.add(linea);
+            
+           
+            
+            
+        }
+        resultados.cargarListaTandas(lista);
        
     }
     

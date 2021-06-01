@@ -29,6 +29,12 @@ public class DiaDeTrabajo {
         this.cantidadTandas=cantidadTandas;
     }
 
+    public DiaDeTrabajo() {
+       
+    }
+
+    
+
     public int getNumero() {
         return Numero;
     }

@@ -82,7 +82,13 @@ public class Tanda {
         this.Duracion = Duracion;
     }
 
-    public boolean isLecheCuajada() {
+    public String getEstadoLeche(){
+        if(LecheCuajada==true){
+            return "SI";
+        }else return "NO";
+    }
+    
+    public boolean LecheCuajada() {
         return LecheCuajada;
     }
 
