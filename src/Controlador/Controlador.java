@@ -43,6 +43,7 @@ public class Controlador implements ActionListener {
         if (e.getActionCommand().equals(_primeraVista.INICIAR)) {
            _ingresoDatos=new IngresoDeDatos();
             _ingresoDatos.setControlador(this);
+            _primeraVista.setVisible(false);
             _ingresoDatos.setVisible(true);
         }
         if (e.getActionCommand().equals(_ingresoDatos.SIMULAR)) {
@@ -73,6 +74,7 @@ public class Controlador implements ActionListener {
                 resultados.setControlador(this);
                 diasDeTrabajo = s.getDiasTrabajados();
                 this.RellenarTablaDias();
+                _ingresoDatos.setVisible(false);
                 resultados.setVisible(true);
                 
             }catch(Exception q){
@@ -129,7 +131,7 @@ public class Controlador implements ActionListener {
             linea[3] = ""+t.getCantidadPotesPlastico();
             linea[4] = ""+t.getEstadoLeche();
             linea[5] = ""+t.getProcesoDeteccion();
-            linea[6] = "" +formato.format(t.getDuracion());
+            linea[6] = "" +formato.format(t.getTiempoTotal());
             lista.add(linea);
             
            

@@ -13,7 +13,6 @@ public class Tanda {
     private int CantidadPotesVidrio=0;
     private int CantidadPotesCarton=0;
     private int CantidadPotesPlastico=0;
-    private double Duracion=0;
     private boolean LecheCuajada=false;
     private String ProcesoDeteccion = "-";
     private double DDLProducidoEnTanda = 0;
@@ -74,13 +73,6 @@ public class Tanda {
         this.CantidadPotesPlastico = CantidadPotesPlastico;
     }
 
-    public double getDuracion() {
-        return Duracion;
-    }
-
-    public void setDuracion(double Duracion) {
-        this.Duracion = Duracion;
-    }
 
     public String getEstadoLeche(){
         if(LecheCuajada==true){
