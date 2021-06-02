@@ -6,6 +6,7 @@
 package Vistas;
 
 import Controlador.Controlador;
+import Modelo.DiaDeTrabajo;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -28,19 +29,19 @@ public class Resultados extends javax.swing.JFrame {
     Controlador c = new Controlador();  
     
     public static final String VERTANDAS = "VERTANDAS";
+    public static final String RESIMULAR = "RESIMULAR";
     
     public void setControlador(Controlador control){
         btnVerTandas.setActionCommand(VERTANDAS);
         btnVerTandas.addActionListener(control);
+        
+        btnResimular.setActionCommand(RESIMULAR);
+        btnResimular.addActionListener(control);
     }
     
     public Resultados() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.ArmarGraficoBarras();
-        this.ArmarGraficoTorta();
-        
-        
         
        
     }
@@ -64,13 +65,13 @@ public class Resultados extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnResimular = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         GraficaBarras = new javax.swing.JLabel();
         GraficaTorta = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1700, 1000));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -134,6 +135,8 @@ public class Resultados extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel6.setText("RESULTADOS");
 
+        btnResimular.setText("VOLVER A SIMULAR");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,9 +156,14 @@ public class Resultados extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnVerTandas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnVerTandas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnResimular, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(222, 222, 222)))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,8 +179,11 @@ public class Resultados extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnResimular, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -294,20 +305,21 @@ public class Resultados extends javax.swing.JFrame {
         }//sacamos el enable allowed y selecciona toda la fila
 }
      
-     public void ArmarGraficoBarras(){
+     public void ArmarGraficoBarras(ArrayList<DiaDeTrabajo> dias){
          //Se almacenan los datos que seran usados en el gráfico
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
         //barras
-        datos.setValue(8,"java","Misael");
-        datos.setValue(9,"java","Don Enrique");
-        datos.setValue(6,"java","Lupe");
-        datos.setValue(7,"java","Lupercio");
+        for(DiaDeTrabajo d : dias){
+           datos.setValue(d.getGanancia(),"Ganancia en el Dia",""+d.getNumero()); 
+        }
+        
+        
         
         //Se crea el gráfico y se asignan algunas caracteristicas
-        JFreeChart grafico_barras = ChartFactory.createBarChart3D("Calificaciones Java","Estudiantes", "Promedios",datos, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart grafico_barras = ChartFactory.createBarChart3D("Ganancias Por Dia","Dias", "Ganancias[$]",datos, PlotOrientation.VERTICAL, true, true, false);
         
         //Se guarda el grafico
-        BufferedImage image = grafico_barras.createBufferedImage(300,300);//Tamaño Barras
+        BufferedImage image = grafico_barras.createBufferedImage(650,300);//Tamaño Barras
         
         //Se crea la imagen y se agrega a la etiqueta
         GraficaBarras.setIcon(new ImageIcon(image));//Le damos imagen a un Label
@@ -342,6 +354,7 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JLabel GraficaTorta;
     private javax.swing.JTable TablaDias;
     private javax.swing.JTable TablaTandas;
+    private javax.swing.JButton btnResimular;
     private javax.swing.JButton btnVerTandas;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel3;

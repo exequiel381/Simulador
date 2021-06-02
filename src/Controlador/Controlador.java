@@ -75,6 +75,8 @@ public class Controlador implements ActionListener {
                 diasDeTrabajo = s.getDiasTrabajados();
                 this.RellenarTablaDias();
                 _ingresoDatos.setVisible(false);
+                resultados.ArmarGraficoBarras(diasDeTrabajo);
+                resultados.ArmarGraficoTorta();
                 resultados.setVisible(true);
                 
             }catch(Exception q){
@@ -93,7 +95,13 @@ public class Controlador implements ActionListener {
             }
             
             this.RellenarTablaTandas(dia);
-    }
+        }
+        
+        if (e.getActionCommand().equals(resultados.RESIMULAR)){
+           resultados.setVisible(false);
+           _primeraVista.setVisible(false);
+           _ingresoDatos.setVisible(true);
+        }
         
     }
     
