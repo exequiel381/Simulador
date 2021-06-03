@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -57,6 +58,7 @@ public class Simulacion {
     double GananciaCartonEnTanda;
     double DDLProducidoEnTanda;
 
+    private DecimalFormat formato = new DecimalFormat("#.00");
 
     
     public Simulacion() {
@@ -68,7 +70,7 @@ public class Simulacion {
         
     }
 
-    public void IniciarSimulacion(double costoMateriaPrima,double costoLeche ,double costoPoteVidrio ,double costoPotePlastico,double costoPoteCarton,double precioPoteVidrio,double precioPotePlastico,double precioPoteCarton) {
+    public String[] IniciarSimulacion(double costoMateriaPrima,double costoLeche ,double costoPoteVidrio ,double costoPotePlastico,double costoPoteCarton,double precioPoteVidrio,double precioPotePlastico,double precioPoteCarton) {
         
        
         posicionTablaAleatoria=0;
@@ -247,6 +249,10 @@ public class Simulacion {
        System.out.println("El tiempo total de produccion de leche del mes fue de: "+TiempoMes);
        System.out.println("El total de dulce de leche producido en el mes fue de: "+TotalDDLMes);
        //Hasta aca salida del while de d<=30 Ragueb
+       
+       
+       String retorno[]= {"$"+formato.format(GananciaNeta), ""+formato.format(TiempoMes/60)+" hs", ""+formato.format(TotalDDLMes)+" Kg"};
+       return retorno;
     }
     
     public double ObtenerVariableAleatoria(){

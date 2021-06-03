@@ -29,6 +29,12 @@ public class Controlador implements ActionListener {
     private ArrayList<DiaDeTrabajo> diasDeTrabajo;
     private DecimalFormat formato = new DecimalFormat("#.00");
     
+    private int diaCon1Tanda=0;
+    private int diaCon2Tanda=0;
+    private int diaCon3Tanda=0;
+    private int diaCon4Tanda=0;
+    
+    
     public Controlador(){
         _primeraVista = new primera();
         _primeraVista.setControlador(this);
@@ -59,25 +65,32 @@ public class Controlador implements ActionListener {
             double PP=0;
 
             try {
-                CMP = Double.parseDouble("69270");//Convierto todos los txt que recibo
-                CL = Double.parseDouble("56000");
-                CPV = Double.parseDouble("34");
-                CPC = Double.parseDouble("30");
-                CPP = Double.parseDouble("12");
-                PV = Double.parseDouble("90");
-                PC = Double.parseDouble("85");
-                PP = Double.parseDouble("70");
+                CMP = Double.parseDouble(_ingresoDatos.txtCMP.getText());//Convierto todos los txt que recibo
+                CL = Double.parseDouble(_ingresoDatos.txtCL.getText());
+                CPV = Double.parseDouble(_ingresoDatos.txtCPV.getText());
+                CPC = Double.parseDouble(_ingresoDatos.txtCPC.getText());
+                CPP = Double.parseDouble(_ingresoDatos.txtCPP.getText());
+                PV = Double.parseDouble(_ingresoDatos.txtPV.getText());
+                PC = Double.parseDouble(_ingresoDatos.txtPC.getText());
+                PP = Double.parseDouble(_ingresoDatos.txtPP.getText());
                 
-                s.IniciarSimulacion(CMP, CL, CPV, CPP, CPC, PV, PP, PC);
-                
+                String retornoDatosDelMes[]= s.IniciarSimulacion(CMP, CL, CPV, CPP, CPC, PV, PP, PC);
+              
                 resultados = new Resultados();
                 resultados.setControlador(this);
                 diasDeTrabajo = s.getDiasTrabajados();
                 this.RellenarTablaDias();
                 _ingresoDatos.setVisible(false);
                 resultados.ArmarGraficoBarras(diasDeTrabajo);
-                resultados.ArmarGraficoTorta();
+                
+                this.ContarDiasPorTanda();
+                
+                resultados.ArmarGraficoTorta(diaCon1Tanda,diaCon2Tanda,diaCon3Tanda,diaCon4Tanda);
                 resultados.setVisible(true);
+                
+                resultados.jLabel1.setText(retornoDatosDelMes[0]);
+                resultados.jLabel2.setText(retornoDatosDelMes[1]);
+                resultados.jLabel7.setText(retornoDatosDelMes[2]);
                 
             }catch(Exception q){
                 JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS DEBEN TENER UN VALOR NUMERICO");
@@ -148,6 +161,24 @@ public class Controlador implements ActionListener {
         }
         resultados.cargarListaTandas(lista);
        
+    }
+    
+    public void ContarDiasPorTanda(){
+        for(DiaDeTrabajo t : diasDeTrabajo ){
+            if(t.getCantidadTandas()==1){
+                diaCon1Tanda++;
+            }
+             if(t.getCantidadTandas()==2){
+                diaCon2Tanda++;
+            }
+             if(t.getCantidadTandas()==3){
+                diaCon3Tanda++;
+            }
+             if(t.getCantidadTandas()==4){
+                diaCon4Tanda++;
+            }
+            
+        }
     }
     
     

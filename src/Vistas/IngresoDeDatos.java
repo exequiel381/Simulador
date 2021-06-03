@@ -274,13 +274,13 @@ public class IngresoDeDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCL;
-    private javax.swing.JTextField txtCMP;
-    private javax.swing.JTextField txtCPC;
-    private javax.swing.JTextField txtCPP;
-    private javax.swing.JTextField txtCPV;
-    private javax.swing.JTextField txtPC;
-    private javax.swing.JTextField txtPP;
-    private javax.swing.JTextField txtPV;
+    public javax.swing.JTextField txtCL;
+    public javax.swing.JTextField txtCMP;
+    public javax.swing.JTextField txtCPC;
+    public javax.swing.JTextField txtCPP;
+    public javax.swing.JTextField txtCPV;
+    public javax.swing.JTextField txtPC;
+    public javax.swing.JTextField txtPP;
+    public javax.swing.JTextField txtPV;
     // End of variables declaration//GEN-END:variables
 }
